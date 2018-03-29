@@ -188,7 +188,7 @@ object Form1: TForm1
         Top = 16
         Width = 70
         Height = 17
-        Caption = 'Résultats :'
+        Caption = 'R'#233'sultats :'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -15
@@ -214,7 +214,7 @@ object Form1: TForm1
         Top = 16
         Width = 261
         Height = 17
-        Caption = 'Ce programme n''admet pas de solution '
+        Caption = 'Ce programme n'#39'admet pas de solution '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
         Font.Height = -15
@@ -1919,7 +1919,7 @@ object Form1: TForm1
       Top = 80
       Width = 265
       Height = 14
-      Caption = 'le nombre de variables doit étre superieur ou égale à 2 '
+      Caption = 'le nombre de variables doit '#233'tre superieur ou '#233'gale '#224' 2 '
       Color = 2105123
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 6471269
@@ -1935,7 +1935,7 @@ object Form1: TForm1
       Top = 104
       Width = 275
       Height = 14
-      Caption = 'le nombre de contraintes doit étre superieur ou égale à 2 '
+      Caption = 'le nombre de contraintes doit '#233'tre superieur ou '#233'gale '#224' 2 '
       Color = 2105123
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 6471269
@@ -2002,7 +2002,7 @@ object Form1: TForm1
       Top = 40
       Width = 161
       Height = 19
-      Caption = 'Visualiser les itérations'
+      Caption = 'Visualiser les it'#233'rations'
       TabOrder = 1
     end
   end

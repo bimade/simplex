@@ -318,7 +318,7 @@ begin
 //********************* fin du simplexe***************************
     if (existe=false)and(opt=false) then
         begin
-          ShowMessage('Y a pas de solution !!');
+          messageDlg('Il n''y a pas de solution,'#13'ou bien le problème est non borné!',mtInformation,[mbyes],0);
           BitBtn1.Enabled:=true;
           Button10.Enabled:=false;
           Panel2.Visible:=true;
@@ -425,7 +425,7 @@ else
   Button2.Enabled:=false;
 if (existe=false)and(opt=false) then
         begin
-          ShowMessage('Y a pas de solution !!');
+          MessageDlg('Il n''y a pas de solution,'#13'ou bien le problème est non borné!',mtInformation,[mbyes],0);
           BitBtn1.Enabled:=true;
           Button10.Enabled:=false;
           Panel2.Visible:=true;
@@ -562,15 +562,17 @@ end;
 
 procedure TForm1.btValMatClick(Sender: TObject);
 var
-i,j:integer;
-boolC,boolA,boolCe,boolAe:boolean;
+i,j,k:integer;
+boolC,boolA,boolCe,boolAe,boolB:boolean;
 begin
+boolB:=True;
 boolC:=True;
 boolA:=True;
 boolCe:=True;
 boolAe:=True;
 i:=0;
 j:=0;
+//Recherche les erreur dans la fonction objectif
 while (i<sgC.ColCount) and(boolc=true)and (boolCe=true) do
   begin
   if (sgC.Cells[i,0]='') then boolc:=false
@@ -588,7 +590,7 @@ while (i<sgC.ColCount) and(boolc=true)and (boolCe=true) do
 
 
 
-
+ //Recherche les erreur dans la matrice
  while (j<sgA.ColCount) and (boolA=true) and (boolAe=true) do
         begin
         i:=0;
@@ -613,6 +615,19 @@ while (i<sgC.ColCount) and(boolc=true)and (boolCe=true) do
           end;
   j:=j+1;
   end;
+//Recherche les erreurs dans le vecteur B
+k:=0;
+while (k<sgA.RowCount) and (boolB=true) do
+begin
+if (StrToFloat(sgA.Cells[sgA.ColCount-1,k])<0) then boolB:=false;
+k:=k+1;
+end;
+
+
+
+
+
+
 //Affichage de messages d'erreurs si les matrices ne sont pas correctement remplis.
 
 if (boolCe=false) then MessageDlg('Une ou plusieurs valeurs entrées dans la fonction objectif sont incorrectes!',mtwarning,[mbok],0);
@@ -621,8 +636,8 @@ if (boolC=false) then MessageDlg('Toutes les cases de la fonction objectif doive
 
 if (boolAe=False) then MessageDlg('Une ou plusieurs valeurs entrées dans la matrice des contraintes sont incorrectes!',mtwarning,[mbok],0);
 if (boolA=false) then MessageDlg('Toutes les cases de la matrice doivent être remplies',mtwarning,[mbok],0);
-
-if (boolC=true) and (boolA=true) and (boolCe=true) and (boolAe=true) then
+if (boolB=False) then MessageDlg('Les valeurs du vecteur B doivent être positives!',mtwarning,[mbok],0);
+if (boolC=true) and (boolA=true) and (boolCe=true) and (boolAe=true) and (boolB=true) then
   begin
       fichier1.Enabled:=false;
       Label5.Visible:=true;
